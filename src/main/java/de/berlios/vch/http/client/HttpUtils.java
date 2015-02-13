@@ -67,7 +67,7 @@ public class HttpUtils {
     public static String get(String url, Map<String, String> headers, String charset, String user, String pass) throws IOException {
         String cachedPage = stringCache.get(url);
         if (cachedPage != null) {
-            logger.trace("Page found in cache");
+            logger.trace("Page found in cache: {}", url);
             return cachedPage;
         } else {
             logger.trace("Downloading page {}", url);
@@ -112,7 +112,7 @@ public class HttpUtils {
     public static HttpResponse getResponse(String url, Map<String, String> headers, String charset) throws IOException {
         HttpResponse response = responseCache.get(url);
         if (response != null) {
-            logger.trace("Page found in cache");
+            logger.trace("Page found in cache: {}", url);
             return response;
         } else {
             logger.trace("Downloading page {}", url);
