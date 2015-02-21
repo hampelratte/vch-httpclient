@@ -155,6 +155,7 @@ public class HttpUtils {
      * @throws IOException
      */
     public static String post(String url, Map<String, String> headers, byte[] content, String responseCharset) throws IOException {
+        logger.trace("Downloading page {}", url);
         // initialize the connection
         URL page = new URL(url);
         HttpURLConnection con = (HttpURLConnection) page.openConnection();
