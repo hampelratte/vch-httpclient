@@ -13,4 +13,10 @@
         <version>2</version>
         <relativePath>../vch-parent/pom.xml</relativePath>
     </parent>
+    
+    <scm>
+        <connection>scm:git:git@github.com/hampelratte/vch-httpclient.git</connection>
+        <developerConnection>scm:git:git@github.com:hampelratte/vch-httpclient.git</developerConnection>
+        <url>https://github.com/hampelratte/vch-httpclient.git</url>
+    </scm>
 </project>
