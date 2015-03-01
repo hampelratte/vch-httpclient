@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>httpclient</artifactId>
     <packaging>bundle</packaging>
-    <version>1.1.1</version>
+    <version>1.1.2-SNAPSHOT</version>
     <name>VCH HTTP Client</name>
     <description>A simple HTTP client with caching capabilities</description>
 
