@@ -36,14 +36,14 @@ public class HttpUtils {
 
     /**
      * Downloads a web page.
-     * 
+     *
      * @param url
      *            the webpage to download
      * @param headers
      *            the HTTP headers to send
      * @param charset
      *            the charset used to decode the webpage
-     * 
+     *
      */
     public static String get(String url, Map<String, String> headers, String charset) throws IOException {
         return get(url, headers, charset, null, null);
@@ -51,7 +51,7 @@ public class HttpUtils {
 
     /**
      * Performs a HTTP basic auth and downloads a web page.
-     * 
+     *
      * @param url
      *            the webpage to download
      * @param headers
@@ -62,7 +62,7 @@ public class HttpUtils {
      *            the user name for the login
      * @param pass
      *            the password for the login
-     * 
+     *
      */
     public static String get(String url, Map<String, String> headers, String charset, String user, String pass) throws IOException {
         String cachedPage = stringCache.get(url);
@@ -144,7 +144,7 @@ public class HttpUtils {
     }
 
     /**
-     * 
+     *
      * @param url
      * @param headers
      * @param content
@@ -191,7 +191,7 @@ public class HttpUtils {
 
     /**
      * Adds a parameter to a given URI
-     * 
+     *
      * @param uri
      * @param param
      * @param value
@@ -268,5 +268,16 @@ public class HttpUtils {
             }
         }
         return parameters;
+    }
+
+    public static Map<String, String> createFirefoxHeader() {
+        Map<String, String> header = new HashMap<String, String>();
+        header.put("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0");
+        header.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+        header.put("Accept-Language", "en-us;q=0.5,en;q=0.3");
+        header.put("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.7");
+        header.put("Keep-Alive", "300");
+        header.put("Connection", "keep-alive");
+        return header;
     }
 }
