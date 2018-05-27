@@ -215,7 +215,23 @@ public class HttpUtils {
     public static Map<String, List<String>> head(String url, Map<String, String> headers, String charset) throws IOException {
         logger.trace("Request HEAD for page {}", url);
         URL page = new URL(url);
-        URLConnection con = page.openConnection();
+        HttpURLConnection con = (HttpURLConnection) page.openConnection();
+        con.setRequestMethod("HEAD");
+        if (headers != null) {
+            for (Iterator<Entry<String, String>> iterator = headers.entrySet().iterator(); iterator.hasNext();) {
+                Entry<String, String> entry = iterator.next();
+                con.setRequestProperty(entry.getKey(), entry.getValue());
+            }
+        }
+
+        return con.getHeaderFields();
+    }
+
+    public static Map<String, List<String>> options(String url, Map<String, String> headers, String charset) throws IOException {
+        logger.trace("Request OPTIONS for page {}", url);
+        URL page = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) page.openConnection();
+        con.setRequestMethod("OPTIONS");
         if (headers != null) {
             for (Iterator<Entry<String, String>> iterator = headers.entrySet().iterator(); iterator.hasNext();) {
                 Entry<String, String> entry = iterator.next();
@@ -272,12 +288,13 @@ public class HttpUtils {
 
     public static Map<String, String> createFirefoxHeader() {
         Map<String, String> header = new HashMap<String, String>();
-        header.put("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0");
+        header.put("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0");
         header.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
         header.put("Accept-Language", "en-us;q=0.5,en;q=0.3");
         header.put("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.7");
         header.put("Keep-Alive", "300");
         header.put("Connection", "keep-alive");
+        header.put("DNT", "1");
         return header;
     }
 }
